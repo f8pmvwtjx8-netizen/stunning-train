@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#070707" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Hybrid Training" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <title>Hybrid Training</title>
+    <link rel="manifest" href="manifest.json" />
+    <link rel="apple-touch-icon" href="icons/icon-192.png" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Programme 5 jours/semaine</p>
+          <h1>Hybrid Training</h1>
+          <p class="hero-text">
+            Force, endurance, perte de graisse et mental solide pour un homme
+            de 40 ans, niveau intermédiaire.
+          </p>
+        </div>
+        <div class="hero-badge">
+          <span id="streakValue">0</span>
+          <small>jours de discipline</small>
+        </div>
+      </header>
+
+      <main>
+        <section id="accueil" class="view active">
+          <div class="motivation-strip" id="motivationQuote">
+            Discipline avant motivation
+          </div>
+
+          <div class="stats-grid">
+            <article class="stat-card">
+              <span class="stat-label">Progression</span>
+              <strong id="progressPercent">0%</strong>
+              <div class="progress-bar">
+                <span id="progressBar"></span>
+              </div>
+            </article>
+            <article class="stat-card">
+              <span class="stat-label">Calories</span>
+              <strong id="caloriesValue">0 kcal</strong>
+              <small>estimation hebdo</small>
+            </article>
+            <article class="stat-card">
+              <span class="stat-label">Minutes</span>
+              <strong id="minutesValue">0 min</strong>
+              <small>entraînement total</small>
+            </article>
+            <article class="stat-card">
+              <span class="stat-label">Seances</span>
+              <strong id="sessionsValue">0/5</strong>
+              <small>terminées</small>
+            </article>
+          </div>
+
+          <section class="panel">
+            <div class="section-heading">
+              <h2>Cette semaine</h2>
+              <span id="weekStatus">Objectif: 5 séances</span>
+            </div>
+            <div class="week-list" id="dashboardSessions"></div>
+          </section>
+        </section>
+
+        <section id="programme" class="view">
+          <div class="section-heading">
+            <h2>Programme</h2>
+            <span>Sélectionne une séance</span>
+          </div>
+          <div class="program-list" id="programList"></div>
+
+          <section class="panel advanced-kettlebell-panel">
+            <div class="section-heading">
+              <h2>Bloc kettlebell long & dur</h2>
+              <span>20 exercices choisis dans le PDF</span>
+            </div>
+            <div class="kb-hard-list" id="kettlebellHardList"></div>
+          </section>
+        </section>
+
+        <section id="timer" class="view">
+          <div class="section-heading">
+            <h2>Timer</h2>
+            <span>EMOM, AMRAP, Intervalles, Repos</span>
+          </div>
+
+          <div class="timer-card">
+            <div class="timer-tabs" id="timerModes"></div>
+            <div class="timer-display" id="timerDisplay">10:00</div>
+            <p class="timer-mode-label" id="timerDescription">
+              AMRAP 10 minutes: travaille en continu avec une technique propre.
+            </p>
+
+            <div class="timer-controls">
+              <label>
+                Minutes
+                <input id="timerMinutes" type="number" min="0" value="10" />
+              </label>
+              <label>
+                Secondes
+              <input id="timerSeconds" type="number" min="0" max="59" value="0" />
+              </label>
+            </div>
+
+            <div class="button-row">
+              <button class="primary-btn" id="startTimer">Démarrer</button>
+              <button class="ghost-btn" id="pauseTimer">Pause</button>
+              <button class="ghost-btn" id="resetTimer">Reset</button>
+            </div>
+          </div>
+        </section>
+
+        <section id="progression" class="view">
+          <div class="section-heading">
+            <h2>Progression</h2>
+            <span>Historique et journal</span>
+          </div>
+
+          <form class="log-form" id="progressForm">
+            <label>
+              Séance
+              <select id="logSession"></select>
+            </label>
+            <label>
+              Poids utilisé (kg)
+              <input id="logWeight" type="number" min="0" placeholder="Ex: 80" />
+            </label>
+            <label>
+              Distance course (km)
+              <input id="logRun" type="number" min="0" step="0.1" placeholder="Ex: 5.2" />
+            </label>
+            <label>
+              Distance velo (km)
+              <input id="logBike" type="number" min="0" step="0.1" placeholder="Ex: 28" />
+            </label>
+            <label>
+              Temps total (min)
+              <input id="logTime" type="number" min="0" placeholder="Ex: 55" />
+            </label>
+            <label class="full">
+              Notes personnelles
+              <textarea id="logNotes" rows="4" placeholder="RPE, energie, douleurs, mental..."></textarea>
+            </label>
+            <button class="primary-btn full" type="submit">Ajouter au suivi</button>
+          </form>
+
+          <div class="history-list" id="historyList"></div>
+        </section>
+
+        <section id="profil" class="view">
+          <div class="profile-card">
+            <div class="avatar">40</div>
+            <div>
+              <p class="eyebrow">Profil utilisateur</p>
+              <h2>Homme intermédiaire</h2>
+              <p>
+                Objectif: transformation physique, force utile, endurance,
+                perte de graisse et mental fort.
+              </p>
+            </div>
+          </div>
+
+          <div class="panel">
+            <h2>Principes</h2>
+            <ul class="principles">
+              <li>5 séances par semaine, exécution stricte.</li>
+              <li>Progression lente mais mesurable sur les charges.</li>
+              <li>Zone 2 pour construire le moteur.</li>
+              <li>Mobilité et récupération pour durer.</li>
+              <li>Notes personnelles après chaque séance.</li>
+            </ul>
+          </div>
+        </section>
+      </main>
+
+      <nav class="bottom-nav" aria-label="Navigation principale">
+        <button class="nav-btn active" data-view="accueil">Accueil</button>
+        <button class="nav-btn" data-view="programme">Programme</button>
+        <button class="nav-btn" data-view="timer">Timer</button>
+        <button class="nav-btn" data-view="progression">Progression</button>
+        <button class="nav-btn" data-view="profil">Profil</button>
+      </nav>
+    </div>
+
+    <div class="modal" id="sessionModal" aria-hidden="true">
+      <div class="modal-content" role="dialog" aria-modal="true">
+        <button class="close-btn" id="closeSession" aria-label="Fermer">x</button>
+        <div id="sessionDetails"></div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
